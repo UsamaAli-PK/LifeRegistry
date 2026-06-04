@@ -80,8 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "LifeRegistry — Stay on top of everything" },
       {
         name: "description",
-        content:
-          "One secure dashboard for every subscription, warranty, account, and renewal.",
+        content: "One secure dashboard for every subscription, warranty, account, and renewal.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

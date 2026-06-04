@@ -10,7 +10,9 @@ export function RouteError({ error, reset }: { error: Error; reset: () => void }
         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-coral/15 text-brand-coral">
           <AlertTriangle className="h-5 w-5" />
         </span>
-        <h2 className="font-display text-2xl font-bold tracking-tight">Something broke loading this page</h2>
+        <h2 className="font-display text-2xl font-bold tracking-tight">
+          Something broke loading this page
+        </h2>
         <p className="max-w-md text-sm text-muted-foreground">{error.message || "Unknown error"}</p>
         <Button
           onClick={() => {

@@ -8,19 +8,17 @@ import { ItemFormDialog, type ItemRow } from "@/components/app/ItemFormDialog";
 import { KpiSkeletonGrid, ListSkeleton } from "@/components/app/Skeleton";
 import { RouteError } from "@/components/app/RouteError";
 import { toast } from "sonner";
-import {
-  CYCLE_LABEL,
-  TYPE_META,
-  daysUntil,
-  formatMoney,
-  monthlyEquivalent,
-} from "@/lib/items";
+import { CYCLE_LABEL, TYPE_META, daysUntil, formatMoney, monthlyEquivalent } from "@/lib/items";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
       { title: "Dashboard — LifeRegistry" },
-      { name: "description", content: "Your live registry: total items, monthly spend, upcoming renewals, and active alerts." },
+      {
+        name: "description",
+        content:
+          "Your live registry: total items, monthly spend, upcoming renewals, and active alerts.",
+      },
     ],
   }),
   component: Dashboard,
@@ -94,7 +92,9 @@ function Dashboard() {
         <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">/ your command center</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">
+                / your command center
+              </p>
               <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
                 hey {name || "…"} <span className="inline-block tilt-sm-r">👋</span>
               </h1>
@@ -129,10 +129,30 @@ function Dashboard() {
             <KpiSkeletonGrid />
           ) : (
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <Kpi label="Total items" val={String(stats.total)} icon={Sparkles} tint="bg-brand-violet/15 text-brand-violet" />
-              <Kpi label="Monthly spend" val={formatMoney(stats.monthly)} icon={Wallet} tint="bg-brand-mint/15 text-brand-mint" />
-              <Kpi label="Due in 14d" val={String(stats.dueSoon)} icon={Bell} tint="bg-brand-amber/20 text-amber-700 dark:text-brand-amber" />
-              <Kpi label="Alerts" val={String(stats.alerts)} icon={TrendingUp} tint="bg-brand-coral/15 text-brand-coral" />
+              <Kpi
+                label="Total items"
+                val={String(stats.total)}
+                icon={Sparkles}
+                tint="bg-brand-violet/15 text-brand-violet"
+              />
+              <Kpi
+                label="Monthly spend"
+                val={formatMoney(stats.monthly)}
+                icon={Wallet}
+                tint="bg-brand-mint/15 text-brand-mint"
+              />
+              <Kpi
+                label="Due in 14d"
+                val={String(stats.dueSoon)}
+                icon={Bell}
+                tint="bg-brand-amber/20 text-amber-700 dark:text-brand-amber"
+              />
+              <Kpi
+                label="Alerts"
+                val={String(stats.alerts)}
+                icon={TrendingUp}
+                tint="bg-brand-coral/15 text-brand-coral"
+              />
             </div>
           )}
 
@@ -140,7 +160,9 @@ function Dashboard() {
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             <div className="glass-card rounded-3xl p-6 sm:p-8 lg:col-span-2">
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ upcoming renewals</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                  / upcoming renewals
+                </p>
                 <Link
                   to="/items"
                   className="flex items-center gap-1 font-mono text-[11px] uppercase tracking-widest text-brand-violet hover:underline"
@@ -191,16 +213,21 @@ function Dashboard() {
                       d < 0
                         ? "bg-brand-coral/15 text-brand-coral"
                         : d <= 7
-                        ? "bg-brand-amber/25 text-amber-700 dark:text-brand-amber"
-                        : "bg-brand-mint/15 text-brand-mint";
-                    const label = d < 0 ? `${Math.abs(d)}d overdue` : d === 0 ? "today" : `in ${d}d`;
+                          ? "bg-brand-amber/25 text-amber-700 dark:text-brand-amber"
+                          : "bg-brand-mint/15 text-brand-mint";
+                    const label =
+                      d < 0 ? `${Math.abs(d)}d overdue` : d === 0 ? "today" : `in ${d}d`;
                     return (
                       <li key={i.id} className="flex items-center gap-3 py-3">
-                        <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}>
+                        <span
+                          className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}
+                        >
                           {meta.emoji}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate font-display text-base font-bold tracking-tight">{i.name}</p>
+                          <p className="truncate font-display text-base font-bold tracking-tight">
+                            {i.name}
+                          </p>
                           <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                             {meta.label}
                             {i.vendor ? ` · ${i.vendor}` : ""}
@@ -213,7 +240,9 @@ function Dashboard() {
                               {i.billing_cycle ? CYCLE_LABEL[i.billing_cycle] : ""}
                             </span>
                           </p>
-                          <span className={`sticker mt-1 inline-block rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${tone}`}>
+                          <span
+                            className={`sticker mt-1 inline-block rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${tone}`}
+                          >
                             {label}
                           </span>
                         </div>
@@ -225,11 +254,31 @@ function Dashboard() {
             </div>
 
             <aside className="glass-card rounded-3xl p-6 sm:p-8">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ quick jump</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                / quick jump
+              </p>
               <div className="mt-5 grid gap-3">
-                <QuickLink to="/items" emoji="◉" label="Registry" hint="Browse & edit" tone="bg-brand-violet/15 text-brand-violet" />
-                <QuickLink to="/calendar" emoji="◈" label="Calendar" hint="See renewals" tone="bg-brand-mint/15 text-brand-mint" />
-                <QuickLink to="/settings" emoji="✦" label="Settings" hint="Profile & prefs" tone="bg-brand-amber/25 text-amber-700 dark:text-brand-amber" />
+                <QuickLink
+                  to="/items"
+                  emoji="◉"
+                  label="Registry"
+                  hint="Browse & edit"
+                  tone="bg-brand-violet/15 text-brand-violet"
+                />
+                <QuickLink
+                  to="/calendar"
+                  emoji="◈"
+                  label="Calendar"
+                  hint="See renewals"
+                  tone="bg-brand-mint/15 text-brand-mint"
+                />
+                <QuickLink
+                  to="/settings"
+                  emoji="✦"
+                  label="Settings"
+                  hint="Profile & prefs"
+                  tone="bg-brand-amber/25 text-amber-700 dark:text-brand-amber"
+                />
               </div>
               <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                 checkpoint 4 / 6 — dashboard live
@@ -258,7 +307,9 @@ function Kpi({
   return (
     <div className="glass-card rounded-2xl p-5">
       <div className="flex items-center justify-between">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{label}</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          {label}
+        </p>
         <span className={`grid h-8 w-8 place-items-center rounded-full ${tint}`}>
           <Icon className="h-4 w-4" />
         </span>
@@ -286,13 +337,18 @@ function QuickLink({
       to={to}
       className="group flex items-center gap-3 rounded-2xl border border-border bg-background/40 p-3 transition hover:-translate-y-0.5 hover:border-foreground/30"
     >
-      <span className={`grid h-10 w-10 place-items-center rounded-2xl font-display text-lg ${tone}`}>{emoji}</span>
+      <span
+        className={`grid h-10 w-10 place-items-center rounded-2xl font-display text-lg ${tone}`}
+      >
+        {emoji}
+      </span>
       <div className="flex-1">
         <p className="font-display text-base font-bold tracking-tight">{label}</p>
-        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{hint}</p>
+        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          {hint}
+        </p>
       </div>
       <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-foreground" />
     </Link>
   );
 }
-

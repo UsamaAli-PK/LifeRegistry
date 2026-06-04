@@ -58,9 +58,16 @@ function AuthPage() {
 
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6">
         <Link to="/" className="flex items-center">
-          <Logo withWordmark className="h-8 w-8" wordmarkClassName="font-display text-lg font-bold tracking-tight" />
+          <Logo
+            withWordmark
+            className="h-8 w-8"
+            wordmarkClassName="font-display text-lg font-bold tracking-tight"
+          />
         </Link>
-        <Link to="/" className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground">
+        <Link
+          to="/"
+          className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground"
+        >
           ← back home
         </Link>
       </div>
@@ -77,7 +84,8 @@ function AuthPage() {
               <span className="text-brand-gradient">in one place.</span>
             </h1>
             <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              Subscriptions, warranties, domains, accounts — finally organized. Stop forgetting. Stop overpaying.
+              Subscriptions, warranties, domains, accounts — finally organized. Stop forgetting.
+              Stop overpaying.
             </p>
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-background/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               ✦ demo mode — no real account needed
@@ -129,7 +137,9 @@ function AuthPage() {
 
             <div className="my-5 flex items-center gap-3">
               <div className="h-px flex-1 bg-border" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">or email</span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                or email
+              </span>
               <div className="h-px flex-1 bg-border" />
             </div>
 
@@ -162,7 +172,10 @@ function AuthPage() {
                 />
               </div>
               <div>
-                <Label htmlFor="password" className="font-mono text-[11px] uppercase tracking-widest">
+                <Label
+                  htmlFor="password"
+                  className="font-mono text-[11px] uppercase tracking-widest"
+                >
                   Password
                 </Label>
                 <Input
@@ -179,7 +192,13 @@ function AuthPage() {
                 disabled={loading}
                 className="mt-2 h-12 w-full rounded-full bg-foreground font-semibold text-background hover:bg-foreground/90"
               >
-                {loading ? <Loader2 className="animate-spin" /> : mode === "signin" ? "Sign in →" : "Create account →"}
+                {loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : mode === "signin" ? (
+                  "Sign in →"
+                ) : (
+                  "Create account →"
+                )}
               </Button>
             </form>
 

@@ -108,11 +108,34 @@ function seedItems(): ItemRow[] {
   });
 
   return [
-    mk("Netflix Premium", "subscription", "Netflix", 22.99, "monthly", 5, null, ["entertainment", "family"], "https://netflix.com"),
-    mk("Spotify Family", "subscription", "Spotify", 16.99, "monthly", 12, null, ["music"], "https://spotify.com"),
+    mk(
+      "Netflix Premium",
+      "subscription",
+      "Netflix",
+      22.99,
+      "monthly",
+      5,
+      null,
+      ["entertainment", "family"],
+      "https://netflix.com",
+    ),
+    mk(
+      "Spotify Family",
+      "subscription",
+      "Spotify",
+      16.99,
+      "monthly",
+      12,
+      null,
+      ["music"],
+      "https://spotify.com",
+    ),
     mk("iCloud+ 200GB", "subscription", "Apple", 2.99, "monthly", 19, null, ["storage"]),
     mk("ChatGPT Plus", "subscription", "OpenAI", 20, "monthly", 2, null, ["ai", "work"]),
-    mk("Adobe Creative Cloud", "subscription", "Adobe", 59.99, "monthly", 26, null, ["design", "work"]),
+    mk("Adobe Creative Cloud", "subscription", "Adobe", 59.99, "monthly", 26, null, [
+      "design",
+      "work",
+    ]),
     mk("GitHub Pro", "subscription", "GitHub", 4, "monthly", 14, null, ["dev"]),
     mk("yourname.com", "domain", "Namecheap", 12.98, "yearly", 45, null, ["personal"]),
     mk("portfolio.dev", "domain", "Cloudflare", 9.5, "yearly", 120, null, ["personal"]),

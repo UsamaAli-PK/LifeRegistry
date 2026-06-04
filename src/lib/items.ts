@@ -22,7 +22,11 @@ export const TYPE_META: Record<ItemType, { label: string; emoji: string; tone: s
   warranty: { label: "Warranty", emoji: "✦", tone: "bg-brand-mint/15 text-brand-mint" },
   account: { label: "Account", emoji: "◉", tone: "bg-brand-blue/15 text-brand-blue" },
   domain: { label: "Domain", emoji: "◈", tone: "bg-brand-coral/15 text-brand-coral" },
-  membership: { label: "Membership", emoji: "★", tone: "bg-brand-amber/25 text-amber-700 dark:text-brand-amber" },
+  membership: {
+    label: "Membership",
+    emoji: "★",
+    tone: "bg-brand-amber/25 text-amber-700 dark:text-brand-amber",
+  },
   insurance: { label: "Insurance", emoji: "✚", tone: "bg-brand-mint/15 text-brand-mint" },
   bill: { label: "Bill", emoji: "$", tone: "bg-brand-coral/15 text-brand-coral" },
   device: { label: "Device", emoji: "▣", tone: "bg-brand-violet/15 text-brand-violet" },
@@ -39,17 +43,26 @@ export const CYCLE_LABEL: Record<BillingCycle, string> = {
 
 export function monthlyEquivalent(cost: number, cycle: BillingCycle): number {
   switch (cycle) {
-    case "weekly": return cost * 4.345;
-    case "monthly": return cost;
-    case "quarterly": return cost / 3;
-    case "yearly": return cost / 12;
-    case "one_time": return 0;
+    case "weekly":
+      return cost * 4.345;
+    case "monthly":
+      return cost;
+    case "quarterly":
+      return cost / 3;
+    case "yearly":
+      return cost / 12;
+    case "one_time":
+      return 0;
   }
 }
 
 export function formatMoney(n: number, currency = "USD") {
   try {
-    return new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 2 }).format(n);
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 2,
+    }).format(n);
   } catch {
     return `$${n.toFixed(2)}`;
   }

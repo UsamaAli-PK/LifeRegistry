@@ -3,13 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { mockItems } from "@/lib/mock";
 import { AppShell } from "@/components/app/AppShell";
 import { type ItemRow } from "@/components/app/ItemFormDialog";
-import {
-  CYCLE_LABEL,
-  TYPE_META,
-  formatMoney,
-  monthlyEquivalent,
-  type ItemType,
-} from "@/lib/items";
+import { CYCLE_LABEL, TYPE_META, formatMoney, monthlyEquivalent, type ItemType } from "@/lib/items";
 import {
   Bar,
   BarChart,
@@ -30,7 +24,11 @@ export const Route = createFileRoute("/_authenticated/analytics")({
   head: () => ({
     meta: [
       { title: "Analytics — LifeRegistry" },
-      { name: "description", content: "See where your money goes — monthly burn, spend share by category, and your heaviest items." },
+      {
+        name: "description",
+        content:
+          "See where your money goes — monthly burn, spend share by category, and your heaviest items.",
+      },
     ],
   }),
   component: AnalyticsPage,
@@ -73,9 +71,13 @@ function AnalyticsPage() {
     )[0];
     const byType: Record<string, number> = {};
     for (const i of active) {
-      byType[i.type] = (byType[i.type] ?? 0) + monthlyEquivalent(i.cost ?? 0, (i.billing_cycle ?? "monthly") as any);
+      byType[i.type] =
+        (byType[i.type] ?? 0) +
+        monthlyEquivalent(i.cost ?? 0, (i.billing_cycle ?? "monthly") as any);
     }
-    const topCategory = Object.entries(byType).sort((a, b) => b[1] - a[1])[0]?.[0] as ItemType | undefined;
+    const topCategory = Object.entries(byType).sort((a, b) => b[1] - a[1])[0]?.[0] as
+      | ItemType
+      | undefined;
     return { monthly, lifetime, topItem, topCategory, yearly: monthly * 12 };
   }, [items, active]);
 
@@ -132,8 +134,12 @@ function AnalyticsPage() {
     return (
       <AppShell>
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">/ where the money goes</p>
-          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">Analytics</h1>
+          <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">
+            / where the money goes
+          </p>
+          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Analytics
+          </h1>
           <KpiSkeletonGrid />
         </section>
       </AppShell>
@@ -148,9 +154,12 @@ function AnalyticsPage() {
             <span className="sticker tilt-sm-l rounded-full bg-brand-violet px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-white">
               ✦ no data yet
             </span>
-            <h3 className="font-display text-3xl font-bold tracking-tight">Add items to unlock insights</h3>
+            <h3 className="font-display text-3xl font-bold tracking-tight">
+              Add items to unlock insights
+            </h3>
             <p className="max-w-md text-sm text-muted-foreground">
-              Once you've tracked a few subscriptions and bills, this page lights up with where your money actually goes.
+              Once you've tracked a few subscriptions and bills, this page lights up with where your
+              money actually goes.
             </p>
             <Link
               to="/items"
@@ -169,16 +178,30 @@ function AnalyticsPage() {
       <section className="relative overflow-hidden">
         <div className="bg-radial-hero pointer-events-none absolute inset-0 opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
-          <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">/ where the money goes</p>
-          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">Analytics</h1>
+          <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">
+            / where the money goes
+          </p>
+          <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Analytics
+          </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Live snapshot across {active.length} active {active.length === 1 ? "item" : "items"}.
           </p>
 
           {/* Overview */}
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Stat label="Monthly burn" val={formatMoney(overview.monthly)} icon={Wallet} tint="bg-brand-violet/15 text-brand-violet" />
-            <Stat label="Yearly burn" val={formatMoney(overview.yearly)} icon={TrendingUp} tint="bg-brand-mint/15 text-brand-mint" />
+            <Stat
+              label="Monthly burn"
+              val={formatMoney(overview.monthly)}
+              icon={Wallet}
+              tint="bg-brand-violet/15 text-brand-violet"
+            />
+            <Stat
+              label="Yearly burn"
+              val={formatMoney(overview.yearly)}
+              icon={TrendingUp}
+              tint="bg-brand-mint/15 text-brand-mint"
+            />
             <Stat
               label="Top category"
               val={overview.topCategory ? TYPE_META[overview.topCategory].label : "—"}
@@ -197,18 +220,31 @@ function AnalyticsPage() {
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {/* Pie */}
             <div className="glass-card rounded-3xl p-6 sm:p-8">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ by category</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                / by category
+              </p>
               <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">Spend share</h3>
               <div className="mt-4 h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
-                    <Pie data={categoryData} dataKey="value" nameKey="label" innerRadius={50} outerRadius={90} paddingAngle={3}>
+                    <Pie
+                      data={categoryData}
+                      dataKey="value"
+                      nameKey="label"
+                      innerRadius={50}
+                      outerRadius={90}
+                      paddingAngle={3}
+                    >
                       {categoryData.map((c) => (
                         <Cell key={c.type} fill={TYPE_COLORS[c.type]} stroke="transparent" />
                       ))}
                     </Pie>
                     <Tooltip
-                      contentStyle={{ borderRadius: 12, border: "1px solid hsl(var(--border))", background: "hsl(var(--background))" }}
+                      contentStyle={{
+                        borderRadius: 12,
+                        border: "1px solid hsl(var(--border))",
+                        background: "hsl(var(--background))",
+                      }}
                       formatter={(v: number) => formatMoney(v)}
                     />
                   </PieChart>
@@ -218,8 +254,13 @@ function AnalyticsPage() {
                 {categoryData.slice(0, 5).map((c) => (
                   <li key={c.type} className="flex items-center justify-between text-xs">
                     <span className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLORS[c.type] }} />
-                      <span className="font-mono uppercase tracking-widest text-muted-foreground">{c.label}</span>
+                      <span
+                        className="h-2.5 w-2.5 rounded-full"
+                        style={{ background: TYPE_COLORS[c.type] }}
+                      />
+                      <span className="font-mono uppercase tracking-widest text-muted-foreground">
+                        {c.label}
+                      </span>
                     </span>
                     <span className="font-display font-bold">{formatMoney(c.value)}</span>
                   </li>
@@ -229,16 +270,39 @@ function AnalyticsPage() {
 
             {/* Timeline */}
             <div className="glass-card rounded-3xl p-6 sm:p-8 lg:col-span-2">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ last 12 months</p>
-              <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">Monthly burn timeline</h3>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                / last 12 months
+              </p>
+              <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">
+                Monthly burn timeline
+              </h3>
               <div className="mt-4 h-72">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={timeline} margin={{ top: 10, right: 10, bottom: 0, left: -10 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                    <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={11} tickLine={false} axisLine={false} />
-                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickLine={false} axisLine={false} />
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke="hsl(var(--border))"
+                      vertical={false}
+                    />
+                    <XAxis
+                      dataKey="month"
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      stroke="hsl(var(--muted-foreground))"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
                     <Tooltip
-                      contentStyle={{ borderRadius: 12, border: "1px solid hsl(var(--border))", background: "hsl(var(--background))" }}
+                      contentStyle={{
+                        borderRadius: 12,
+                        border: "1px solid hsl(var(--border))",
+                        background: "hsl(var(--background))",
+                      }}
                       formatter={(v: number) => formatMoney(v)}
                     />
                     <Bar dataKey="spend" fill="hsl(265 85% 65%)" radius={[8, 8, 0, 0]} />
@@ -252,8 +316,12 @@ function AnalyticsPage() {
           <div className="glass-card mt-6 rounded-3xl p-6 sm:p-8">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ heaviest hitters</p>
-                <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">Top items by monthly cost</h3>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                  / heaviest hitters
+                </p>
+                <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">
+                  Top items by monthly cost
+                </h3>
               </div>
               <Link
                 to="/items"
@@ -267,11 +335,15 @@ function AnalyticsPage() {
                 const meta = TYPE_META[i.type];
                 return (
                   <li key={i.id} className="flex items-center gap-3 py-3">
-                    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}>
+                    <span
+                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}
+                    >
                       {meta.emoji}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate font-display text-base font-bold tracking-tight">{i.name}</p>
+                      <p className="truncate font-display text-base font-bold tracking-tight">
+                        {i.name}
+                      </p>
                       <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                         {meta.label}
                         {i.vendor ? ` · ${i.vendor}` : ""}
@@ -316,7 +388,9 @@ function Stat({
   return (
     <div className="glass-card rounded-2xl p-5">
       <div className="flex items-center justify-between">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{label}</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          {label}
+        </p>
         <span className={`grid h-8 w-8 place-items-center rounded-full ${tint}`}>
           <Icon className="h-4 w-4" />
         </span>

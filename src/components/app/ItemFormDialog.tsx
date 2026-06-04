@@ -1,12 +1,33 @@
 import { useState, useEffect } from "react";
 import { mockItems } from "@/lib/mock";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { BILLING_CYCLES, CYCLE_LABEL, ITEM_STATUSES, ITEM_TYPES, TYPE_META, type ItemType, type BillingCycle, type ItemStatus } from "@/lib/items";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  BILLING_CYCLES,
+  CYCLE_LABEL,
+  ITEM_STATUSES,
+  ITEM_TYPES,
+  TYPE_META,
+  type ItemType,
+  type BillingCycle,
+  type ItemStatus,
+} from "@/lib/items";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
@@ -92,7 +113,12 @@ export function ItemFormDialog({ open, onOpenChange, item, onSaved }: Props) {
         account_email: f.account_email || null,
         url: f.url || null,
         notes: f.notes || null,
-        tags: f.tags ? f.tags.split(",").map((t) => t.trim()).filter(Boolean) : [],
+        tags: f.tags
+          ? f.tags
+              .split(",")
+              .map((t) => t.trim())
+              .filter(Boolean)
+          : [],
         status: f.status,
       };
 
@@ -123,28 +149,43 @@ export function ItemFormDialog({ open, onOpenChange, item, onSaved }: Props) {
 
         <form onSubmit={handleSave} className="space-y-4">
           <Field label="Name">
-            <Input required value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} placeholder="Netflix, Geico, GitHub…" />
+            <Input
+              required
+              value={f.name}
+              onChange={(e) => setF({ ...f, name: e.target.value })}
+              placeholder="Netflix, Geico, GitHub…"
+            />
           </Field>
 
           <div className="grid grid-cols-2 gap-3">
             <Field label="Type">
               <Select value={f.type} onValueChange={(v) => setF({ ...f, type: v as ItemType })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   {ITEM_TYPES.map((t) => (
                     <SelectItem key={t} value={t}>
-                      <span className="mr-1.5">{TYPE_META[t].emoji}</span>{TYPE_META[t].label}
+                      <span className="mr-1.5">{TYPE_META[t].emoji}</span>
+                      {TYPE_META[t].label}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </Field>
             <Field label="Status">
-              <Select value={f.status} onValueChange={(v) => setF({ ...f, status: v as ItemStatus })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={f.status}
+                onValueChange={(v) => setF({ ...f, status: v as ItemStatus })}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   {ITEM_STATUSES.map((s) => (
-                    <SelectItem key={s} value={s}>{s}</SelectItem>
+                    <SelectItem key={s} value={s}>
+                      {s}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -152,22 +193,43 @@ export function ItemFormDialog({ open, onOpenChange, item, onSaved }: Props) {
           </div>
 
           <Field label="Vendor / provider">
-            <Input value={f.vendor} onChange={(e) => setF({ ...f, vendor: e.target.value })} placeholder="Netflix, Inc." />
+            <Input
+              value={f.vendor}
+              onChange={(e) => setF({ ...f, vendor: e.target.value })}
+              placeholder="Netflix, Inc."
+            />
           </Field>
 
           <div className="grid grid-cols-3 gap-3">
             <Field label="Cost">
-              <Input type="number" step="0.01" value={f.cost} onChange={(e) => setF({ ...f, cost: e.target.value })} placeholder="0.00" />
+              <Input
+                type="number"
+                step="0.01"
+                value={f.cost}
+                onChange={(e) => setF({ ...f, cost: e.target.value })}
+                placeholder="0.00"
+              />
             </Field>
             <Field label="Currency">
-              <Input value={f.currency} onChange={(e) => setF({ ...f, currency: e.target.value.toUpperCase() })} maxLength={3} />
+              <Input
+                value={f.currency}
+                onChange={(e) => setF({ ...f, currency: e.target.value.toUpperCase() })}
+                maxLength={3}
+              />
             </Field>
             <Field label="Cycle">
-              <Select value={f.billing_cycle} onValueChange={(v) => setF({ ...f, billing_cycle: v as BillingCycle })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={f.billing_cycle}
+                onValueChange={(v) => setF({ ...f, billing_cycle: v as BillingCycle })}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   {BILLING_CYCLES.map((c) => (
-                    <SelectItem key={c} value={c}>{CYCLE_LABEL[c]}</SelectItem>
+                    <SelectItem key={c} value={c}>
+                      {CYCLE_LABEL[c]}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -176,29 +238,61 @@ export function ItemFormDialog({ open, onOpenChange, item, onSaved }: Props) {
 
           <div className="grid grid-cols-2 gap-3">
             <Field label="Renews on">
-              <Input type="date" value={f.renewal_date} onChange={(e) => setF({ ...f, renewal_date: e.target.value })} />
+              <Input
+                type="date"
+                value={f.renewal_date}
+                onChange={(e) => setF({ ...f, renewal_date: e.target.value })}
+              />
             </Field>
             <Field label="Expires on">
-              <Input type="date" value={f.expiry_date} onChange={(e) => setF({ ...f, expiry_date: e.target.value })} />
+              <Input
+                type="date"
+                value={f.expiry_date}
+                onChange={(e) => setF({ ...f, expiry_date: e.target.value })}
+              />
             </Field>
           </div>
 
           <Field label="Account email">
-            <Input type="email" value={f.account_email} onChange={(e) => setF({ ...f, account_email: e.target.value })} placeholder="you@domain.com" />
+            <Input
+              type="email"
+              value={f.account_email}
+              onChange={(e) => setF({ ...f, account_email: e.target.value })}
+              placeholder="you@domain.com"
+            />
           </Field>
           <Field label="URL">
-            <Input value={f.url} onChange={(e) => setF({ ...f, url: e.target.value })} placeholder="https://…" />
+            <Input
+              value={f.url}
+              onChange={(e) => setF({ ...f, url: e.target.value })}
+              placeholder="https://…"
+            />
           </Field>
           <Field label="Tags (comma separated)">
-            <Input value={f.tags} onChange={(e) => setF({ ...f, tags: e.target.value })} placeholder="entertainment, family" />
+            <Input
+              value={f.tags}
+              onChange={(e) => setF({ ...f, tags: e.target.value })}
+              placeholder="entertainment, family"
+            />
           </Field>
           <Field label="Notes">
-            <Textarea rows={3} value={f.notes} onChange={(e) => setF({ ...f, notes: e.target.value })} placeholder="Anything to remember…" />
+            <Textarea
+              rows={3}
+              value={f.notes}
+              onChange={(e) => setF({ ...f, notes: e.target.value })}
+              placeholder="Anything to remember…"
+            />
           </Field>
 
           <DialogFooter>
-            <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>Cancel</Button>
-            <Button type="submit" disabled={saving} className="rounded-full bg-foreground text-background hover:bg-foreground/90">
+            <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              disabled={saving}
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90"
+            >
               {saving ? <Loader2 className="animate-spin" /> : item ? "Save changes" : "Add item"}
             </Button>
           </DialogFooter>
@@ -211,7 +305,9 @@ export function ItemFormDialog({ open, onOpenChange, item, onSaved }: Props) {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <Label className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{label}</Label>
+      <Label className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+        {label}
+      </Label>
       <div className="mt-1">{children}</div>
     </div>
   );

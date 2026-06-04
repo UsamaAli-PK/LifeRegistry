@@ -11,12 +11,7 @@ export function Logo({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <img
-        src={logo.url}
-        alt="LifeRegistry"
-        className={className}
-        loading="eager"
-      />
+      <img src={logo.url} alt="LifeRegistry" className={className} loading="eager" />
       {withWordmark && (
         <span className={wordmarkClassName}>
           <span className="text-foreground">Life</span>

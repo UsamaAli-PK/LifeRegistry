@@ -72,18 +72,18 @@ No environment setup needed. Your app runs fully in the browser.
 
 ## 🎯 Features at a glance
 
-| Feature | What it does |
-| --- | --- |
-| 🔐 **Mock login** | Sign in without creating an account |
-| 💾 **Stores locally** | Your data lives in your browser — totally private |
-| 📊 **Dashboard KPIs** | Monthly spend, upcoming renewals, expiries |
-| 🛠 **Full CRUD** | Create, read, update, or delete any item |
-| 9 Item types | Subscription, warranty, domain, insurance, bill, device, account, membership, and others |
-| 📈 **Smart analytics** | See breakdowns by type, vendor, and billing cycle |
-| ✅ **Bulk operations** | Select multiple items and act on them together |
-| 📥 **CSV export** | Download your registry anytime |
-| 🌗 **Dark mode** | Choose your theme |
-| 🔄 **Reset data** | Restore the demo data from Settings anytime |
+| Feature                | What it does                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------- |
+| 🔐 **Mock login**      | Sign in without creating an account                                                      |
+| 💾 **Stores locally**  | Your data lives in your browser — totally private                                        |
+| 📊 **Dashboard KPIs**  | Monthly spend, upcoming renewals, expiries                                               |
+| 🛠 **Full CRUD**       | Create, read, update, or delete any item                                                 |
+| 9 Item types           | Subscription, warranty, domain, insurance, bill, device, account, membership, and others |
+| 📈 **Smart analytics** | See breakdowns by type, vendor, and billing cycle                                        |
+| ✅ **Bulk operations** | Select multiple items and act on them together                                           |
+| 📥 **CSV export**      | Download your registry anytime                                                           |
+| 🌗 **Dark mode**       | Choose your theme                                                                        |
+| 🔄 **Reset data**      | Restore the demo data from Settings anytime                                              |
 
 ---
 
@@ -101,17 +101,17 @@ To clear all data, go to **Settings → Reset mock data** or clear your browser'
 
 ## 🛠 Tech stack (for developers)
 
-| Layer | Tool |
-| --- | --- |
-| Framework | TanStack Start + React 19 |
-| Styling | Tailwind CSS v4 + shadcn/ui |
-| Routing | TanStack Router |
+| Layer        | Tool                          |
+| ------------ | ----------------------------- |
+| Framework    | TanStack Start + React 19     |
+| Styling      | Tailwind CSS v4 + shadcn/ui   |
+| Routing      | TanStack Router               |
 | State & data | TanStack Query + localStorage |
-| Charts | Recharts |
-| Icons | lucide-react |
-| Forms | react-hook-form + zod |
-| Search | cmdk |
-| Data export | papaparse |
+| Charts       | Recharts                      |
+| Icons        | lucide-react                  |
+| Forms        | react-hook-form + zod         |
+| Search       | cmdk                          |
+| Data export  | papaparse                     |
 
 ---
 

@@ -19,13 +19,17 @@ function AuthenticatedLayout() {
     const off = mockAuth.onChange((u) => {
       if (!u) navigate({ to: "/auth" });
     });
-    return () => { off(); };
+    return () => {
+      off();
+    };
   }, [navigate]);
 
   if (!ready) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">loading…</div>
+        <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          loading…
+        </div>
       </div>
     );
   }

@@ -13,7 +13,10 @@ export const Route = createFileRoute("/_authenticated/calendar")({
   head: () => ({
     meta: [
       { title: "Calendar — LifeRegistry" },
-      { name: "description", content: "Month-view of every upcoming renewal and expiration across your registry." },
+      {
+        name: "description",
+        content: "Month-view of every upcoming renewal and expiration across your registry.",
+      },
     ],
   }),
   component: CalendarPage,
@@ -80,7 +83,7 @@ function CalendarPage() {
 
   const monthLabel = cursor.toLocaleString("en-US", { month: "long", year: "numeric" });
   const todayIso = toIso(new Date());
-  const selectedItems = selected ? byDate[selected] ?? [] : [];
+  const selectedItems = selected ? (byDate[selected] ?? []) : [];
 
   return (
     <AppShell>
@@ -89,15 +92,28 @@ function CalendarPage() {
         <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">/ what's coming up</p>
-              <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">{monthLabel}</h1>
+              <p className="font-mono text-xs uppercase tracking-widest text-brand-violet">
+                / what's coming up
+              </p>
+              <h1 className="mt-2 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                {monthLabel}
+              </h1>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex rounded-full border border-border bg-background/60 p-1">
-                <ModeBtn active={mode === "renewal"} onClick={() => setMode("renewal")}>Renewals</ModeBtn>
-                <ModeBtn active={mode === "expiry"} onClick={() => setMode("expiry")}>Expirations</ModeBtn>
+                <ModeBtn active={mode === "renewal"} onClick={() => setMode("renewal")}>
+                  Renewals
+                </ModeBtn>
+                <ModeBtn active={mode === "expiry"} onClick={() => setMode("expiry")}>
+                  Expirations
+                </ModeBtn>
               </div>
-              <Button size="icon" variant="outline" className="h-9 w-9 rounded-full" onClick={() => shift(setCursor, -1)}>
+              <Button
+                size="icon"
+                variant="outline"
+                className="h-9 w-9 rounded-full"
+                onClick={() => shift(setCursor, -1)}
+              >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <Button
@@ -111,7 +127,12 @@ function CalendarPage() {
               >
                 Today
               </Button>
-              <Button size="icon" variant="outline" className="h-9 w-9 rounded-full" onClick={() => shift(setCursor, 1)}>
+              <Button
+                size="icon"
+                variant="outline"
+                className="h-9 w-9 rounded-full"
+                onClick={() => shift(setCursor, 1)}
+              >
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -120,7 +141,9 @@ function CalendarPage() {
           {/* Weekday header (md+) */}
           <div className="mt-8 hidden grid-cols-7 gap-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground md:grid">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-              <div key={d} className="px-2 py-1">{d}</div>
+              <div key={d} className="px-2 py-1">
+                {d}
+              </div>
             ))}
           </div>
 
@@ -190,7 +213,9 @@ function CalendarPage() {
                     <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                       {c.date.toLocaleString("en-US", { month: "short" })}
                     </p>
-                    <p className="font-display text-2xl font-bold tracking-tight">{c.date.getDate()}</p>
+                    <p className="font-display text-2xl font-bold tracking-tight">
+                      {c.date.getDate()}
+                    </p>
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap gap-1">
@@ -215,8 +240,12 @@ function CalendarPage() {
                 <span className="sticker tilt-sm-l rounded-full bg-brand-mint px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-emerald-900">
                   ✦ clear month
                 </span>
-                <h3 className="font-display text-2xl font-bold tracking-tight">No {mode === "renewal" ? "renewals" : "expirations"}</h3>
-                <p className="text-sm text-muted-foreground">Add dates to your items to see them here.</p>
+                <h3 className="font-display text-2xl font-bold tracking-tight">
+                  No {mode === "renewal" ? "renewals" : "expirations"}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Add dates to your items to see them here.
+                </p>
               </div>
             )}
           </div>
@@ -227,7 +256,12 @@ function CalendarPage() {
         <SheetContent side="right" className="w-full sm:max-w-md">
           <SheetHeader>
             <SheetTitle className="font-display text-2xl tracking-tight">
-              {selected && new Date(selected + "T00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
+              {selected &&
+                new Date(selected + "T00:00").toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                })}
             </SheetTitle>
           </SheetHeader>
           <div className="mt-6 space-y-3">
@@ -236,11 +270,15 @@ function CalendarPage() {
               return (
                 <div key={i.id} className="glass-card rounded-2xl p-4">
                   <div className="flex items-start gap-3">
-                    <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}>
+                    <span
+                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}
+                    >
                       {meta.emoji}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate font-display text-base font-bold tracking-tight">{i.name}</p>
+                      <p className="truncate font-display text-base font-bold tracking-tight">
+                        {i.name}
+                      </p>
                       <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                         {meta.label}
                         {i.vendor ? ` · ${i.vendor}` : ""}
@@ -282,7 +320,15 @@ function CalendarPage() {
   );
 }
 
-function ModeBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function ModeBtn({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <button
       onClick={onClick}

@@ -2,7 +2,15 @@ import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { type ReactNode, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
-import { BarChart3, Calendar, Command as CommandIcon, LayoutDashboard, ListChecks, LogOut, Settings } from "lucide-react";
+import {
+  BarChart3,
+  Calendar,
+  Command as CommandIcon,
+  LayoutDashboard,
+  ListChecks,
+  LogOut,
+  Settings,
+} from "lucide-react";
 import { mockAuth } from "@/lib/mock";
 import { toast } from "sonner";
 import { CommandPalette } from "@/components/app/CommandPalette";
@@ -37,7 +45,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6">
           <Link to="/" className="flex items-center">
-            <Logo withWordmark className="h-8 w-8" wordmarkClassName="font-display text-lg font-bold tracking-tight" />
+            <Logo
+              withWordmark
+              className="h-8 w-8"
+              wordmarkClassName="font-display text-lg font-bold tracking-tight"
+            />
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
             {nav.map((n) => {
@@ -67,10 +79,22 @@ export function AppShell({ children }: { children: ReactNode }) {
               Search
               <kbd className="rounded bg-background px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
             </button>
-            <Button size="icon" variant="ghost" onClick={openPalette} className="rounded-full md:hidden" aria-label="Search">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={openPalette}
+              className="rounded-full md:hidden"
+              aria-label="Search"
+            >
               <CommandIcon className="h-4 w-4" />
             </Button>
-            <Button size="icon" variant="ghost" onClick={signOut} className="rounded-full" aria-label="Sign out">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={signOut}
+              className="rounded-full"
+              aria-label="Sign out"
+            >
               <LogOut className="h-4 w-4" />
             </Button>
           </div>

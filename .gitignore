@@ -21,6 +21,18 @@ dist-ssr
 .env.local
 .env.*.local
 
+# Lovable metadata
+.lovable/
+
+# Supabase local config/migrations
+supabase/
+
+# Frontend integration files kept local only
+src/integrations/lovable/
+src/integrations/supabase/
+src/lib/lovable-error-reporting.ts
+
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

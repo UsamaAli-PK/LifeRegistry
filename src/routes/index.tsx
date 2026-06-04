@@ -30,8 +30,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "LifeRegistry — Stay on top of everything" },
       {
         property: "og:description",
-        content:
-          "Track every subscription, warranty, account, and renewal in one secure registry.",
+        content: "Track every subscription, warranty, account, and renewal in one secure registry.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -44,23 +43,64 @@ export const Route = createFileRoute("/")({
 // Content
 // ──────────────────────────────────────────────────────────
 const problems = [
-  { q: "I forgot I was paying for this", a: "Every subscription, with its renewal date.", tone: "violet" as const },
-  { q: "When does my warranty expire?", a: "Countdowns + alerts before it lapses.", tone: "mint" as const },
-  { q: "Where did I save my insurance policy?", a: "Attach the PDF to the item itself.", tone: "amber" as const },
-  { q: "What accounts do I even have?", a: "A complete inventory, in one view.", tone: "coral" as const },
+  {
+    q: "I forgot I was paying for this",
+    a: "Every subscription, with its renewal date.",
+    tone: "violet" as const,
+  },
+  {
+    q: "When does my warranty expire?",
+    a: "Countdowns + alerts before it lapses.",
+    tone: "mint" as const,
+  },
+  {
+    q: "Where did I save my insurance policy?",
+    a: "Attach the PDF to the item itself.",
+    tone: "amber" as const,
+  },
+  {
+    q: "What accounts do I even have?",
+    a: "A complete inventory, in one view.",
+    tone: "coral" as const,
+  },
   { q: "When does my domain renew?", a: "One calendar. Every renewal.", tone: "violet" as const },
-  { q: "My partner doesn't know our accounts", a: "Share a household view, role-based.", tone: "mint" as const },
-  { q: "Time to audit my subscriptions", a: "Built-in keep / cancel / snooze.", tone: "amber" as const },
-  { q: "What if something happens to me?", a: "Designated legacy contact, optional.", tone: "coral" as const },
+  {
+    q: "My partner doesn't know our accounts",
+    a: "Share a household view, role-based.",
+    tone: "mint" as const,
+  },
+  {
+    q: "Time to audit my subscriptions",
+    a: "Built-in keep / cancel / snooze.",
+    tone: "amber" as const,
+  },
+  {
+    q: "What if something happens to me?",
+    a: "Designated legacy contact, optional.",
+    tone: "coral" as const,
+  },
 ];
 
 const features = [
-  { icon: Layers, title: "Universal registry", desc: "Subscriptions, warranties, domains, memberships, insurance, devices — all in one place.", featured: true },
-  { icon: Calendar, title: "Renewal calendar", desc: "Every upcoming charge & expiration, week or month." },
+  {
+    icon: Layers,
+    title: "Universal registry",
+    desc: "Subscriptions, warranties, domains, memberships, insurance, devices — all in one place.",
+    featured: true,
+  },
+  {
+    icon: Calendar,
+    title: "Renewal calendar",
+    desc: "Every upcoming charge & expiration, week or month.",
+  },
   { icon: Bell, title: "Smart reminders", desc: "Email & in-app alerts at 30 / 7 / 1 days." },
   { icon: FileText, title: "Document vault", desc: "Attach receipts, policies, warranty PDFs." },
   { icon: Wallet, title: "Spend at a glance", desc: "Know exactly what you pay monthly & yearly." },
-  { icon: Users, title: "Household sharing", desc: "Invite partner or family. Viewer / editor roles." },
+  {
+    icon: Users,
+    title: "Household sharing",
+    desc: "Invite partner or family. Viewer / editor roles.",
+  },
   { icon: ShieldCheck, title: "Legacy access", desc: "Emergency contact, only if you choose." },
   { icon: Sparkles, title: "Audit mode", desc: "Quarterly walk-through. Keep, cancel, snooze." },
 ];
@@ -104,12 +144,15 @@ function Hero() {
             you own and pay for.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            One secure registry for every subscription, warranty, account, and renewal —
-            so you never forget, never overpay, and never lose access to anything important.
+            One secure registry for every subscription, warranty, account, and renewal — so you
+            never forget, never overpay, and never lose access to anything important.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button size="lg" className="rounded-full bg-brand-gradient px-6 text-white shadow-lg shadow-brand-violet/25 hover:opacity-95">
+            <Button
+              size="lg"
+              className="rounded-full bg-brand-gradient px-6 text-white shadow-lg shadow-brand-violet/25 hover:opacity-95"
+            >
               Start your registry <ArrowRight className="ml-1.5 h-4 w-4" />
             </Button>
             <Button size="lg" variant="outline" className="rounded-full">
@@ -118,9 +161,15 @@ function Hero() {
           </div>
 
           <div className="mt-6 flex items-center gap-4 font-mono text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1"><span className="h-1 w-1 rounded-full bg-foreground/60" /> Free to start</span>
-            <span className="inline-flex items-center gap-1"><span className="h-1 w-1 rounded-full bg-foreground/60" /> No credit card</span>
-            <span className="inline-flex items-center gap-1"><span className="h-1 w-1 rounded-full bg-foreground/60" /> Private by design</span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-foreground/60" /> Free to start
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-foreground/60" /> No credit card
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-foreground/60" /> Private by design
+            </span>
           </div>
 
           {/* Floating stickers */}
@@ -136,10 +185,14 @@ function Hero() {
           <DashboardPreview />
           {/* stickers around card */}
           <div className="pointer-events-none absolute -right-2 -top-3 hidden sm:block">
-            <Sticker tone="mint" className="tilt-r">new</Sticker>
+            <Sticker tone="mint" className="tilt-r">
+              new
+            </Sticker>
           </div>
           <div className="pointer-events-none absolute -bottom-3 -left-3 hidden sm:block">
-            <Sticker tone="violet" className="tilt-l">$5/mo</Sticker>
+            <Sticker tone="violet" className="tilt-l">
+              $5/mo
+            </Sticker>
           </div>
         </div>
       </div>
@@ -161,7 +214,9 @@ function DashboardPreview() {
           </div>
           <div className="relative">
             <Bell className="h-5 w-5 text-muted-foreground" />
-            <span className="absolute -right-1 -top-1 inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-brand-coral text-[8px] font-bold text-white">3</span>
+            <span className="absolute -right-1 -top-1 inline-flex h-3.5 w-3.5 items-center justify-center rounded-full bg-brand-coral text-[8px] font-bold text-white">
+              3
+            </span>
           </div>
         </div>
 
@@ -174,13 +229,35 @@ function DashboardPreview() {
 
         <div className="mt-5 rounded-xl border border-border bg-background/60 p-4">
           <div className="flex items-center justify-between">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">/ upcoming</p>
-            <a href="#" className="text-xs font-medium text-brand-violet hover:underline">view all →</a>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              / upcoming
+            </p>
+            <a href="#" className="text-xs font-medium text-brand-violet hover:underline">
+              view all →
+            </a>
           </div>
           <ul className="mt-3 space-y-3">
-            <UpcomingRow name="Netflix Premium" sub="Renews in 3 days" amount="$19.99" tag="Due soon" tone="amber" />
-            <UpcomingRow name="iCloud+ 200GB" sub="Renews in 9 days" amount="$2.99" tag="Subscription" tone="violet" />
-            <UpcomingRow name="MacBook AppleCare" sub="Expires in 21 days" amount="—" tag="Warranty" tone="mint" />
+            <UpcomingRow
+              name="Netflix Premium"
+              sub="Renews in 3 days"
+              amount="$19.99"
+              tag="Due soon"
+              tone="amber"
+            />
+            <UpcomingRow
+              name="iCloud+ 200GB"
+              sub="Renews in 9 days"
+              amount="$2.99"
+              tag="Subscription"
+              tone="violet"
+            />
+            <UpcomingRow
+              name="MacBook AppleCare"
+              sub="Expires in 21 days"
+              amount="—"
+              tag="Warranty"
+              tone="mint"
+            />
           </ul>
         </div>
       </div>
@@ -193,9 +270,18 @@ function DashboardPreview() {
 // ──────────────────────────────────────────────────────────
 function Marquee() {
   const items = [
-    "subscriptions", "warranties", "domains", "memberships",
-    "insurance", "devices", "utilities", "memberships",
-    "free trials", "renewals", "appliances", "software licenses",
+    "subscriptions",
+    "warranties",
+    "domains",
+    "memberships",
+    "insurance",
+    "devices",
+    "utilities",
+    "memberships",
+    "free trials",
+    "renewals",
+    "appliances",
+    "software licenses",
   ];
   const row = [...items, ...items];
   return (
@@ -221,7 +307,10 @@ function Problems() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionEyebrow>/ problems → solutions</SectionEyebrow>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-          The end of <span className="italic text-brand-gradient">&ldquo;wait, what am I paying for?&rdquo;</span>
+          The end of{" "}
+          <span className="italic text-brand-gradient">
+            &ldquo;wait, what am I paying for?&rdquo;
+          </span>
         </h2>
         <p className="mt-4 max-w-xl text-muted-foreground">
           Every scattered note, spreadsheet, and forgotten email — replaced by one clean registry.
@@ -230,10 +319,13 @@ function Problems() {
         <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {problems.map((p, i) => {
             const accent =
-              p.tone === "violet" ? "text-brand-violet" :
-              p.tone === "mint" ? "text-brand-mint" :
-              p.tone === "amber" ? "text-[oklch(0.55_0.15_75)]" :
-              "text-brand-coral";
+              p.tone === "violet"
+                ? "text-brand-violet"
+                : p.tone === "mint"
+                  ? "text-brand-mint"
+                  : p.tone === "amber"
+                    ? "text-[oklch(0.55_0.15_75)]"
+                    : "text-brand-coral";
             return (
               <div
                 key={p.q}
@@ -293,11 +385,13 @@ function Features() {
         <SectionEyebrow>/ features</SectionEyebrow>
         <div className="mt-4 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <h2 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            Everything you need.<br />
+            Everything you need.
+            <br />
             <span className="text-muted-foreground">Nothing you don&apos;t.</span>
           </h2>
           <p className="max-w-sm text-sm text-muted-foreground">
-            Not a password manager. Not a finance tracker. The missing inventory layer for your digital life.
+            Not a password manager. Not a finance tracker. The missing inventory layer for your
+            digital life.
           </p>
         </div>
 
@@ -316,8 +410,18 @@ function Features() {
             <p className="mt-3 max-w-md text-background/70">{featured.desc}</p>
 
             <div className="mt-8 grid grid-cols-3 gap-2">
-              {["Subscriptions", "Warranties", "Domains", "Memberships", "Insurance", "Devices"].map((c) => (
-                <div key={c} className="rounded-xl border border-background/15 bg-background/5 px-3 py-2 text-xs font-medium">
+              {[
+                "Subscriptions",
+                "Warranties",
+                "Domains",
+                "Memberships",
+                "Insurance",
+                "Devices",
+              ].map((c) => (
+                <div
+                  key={c}
+                  className="rounded-xl border border-background/15 bg-background/5 px-3 py-2 text-xs font-medium"
+                >
                   {c}
                 </div>
               ))}
@@ -327,7 +431,10 @@ function Features() {
           </div>
 
           {rest.map((f, i) => (
-            <div key={f.title} className="group relative rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-0.5 hover:shadow-lg">
+            <div
+              key={f.title}
+              className="group relative rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-0.5 hover:shadow-lg"
+            >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                   / {String(i + 2).padStart(2, "0")}
@@ -351,9 +458,24 @@ function Features() {
 // ──────────────────────────────────────────────────────────
 function HowItWorks() {
   const steps = [
-    { n: "01", t: "Add what you own", d: "Subscriptions, warranties, domains — start with what comes to mind. Import from CSV later.", tone: "violet" },
-    { n: "02", t: "Set the dates", d: "Renewal, expiration, billing cycle. We handle the reminders from there.", tone: "mint" },
-    { n: "03", t: "Stay in control", d: "Review your dashboard, audit quarterly, share with your household. Done.", tone: "amber" },
+    {
+      n: "01",
+      t: "Add what you own",
+      d: "Subscriptions, warranties, domains — start with what comes to mind. Import from CSV later.",
+      tone: "violet",
+    },
+    {
+      n: "02",
+      t: "Set the dates",
+      d: "Renewal, expiration, billing cycle. We handle the reminders from there.",
+      tone: "mint",
+    },
+    {
+      n: "03",
+      t: "Stay in control",
+      d: "Review your dashboard, audit quarterly, share with your household. Done.",
+      tone: "amber",
+    },
   ];
   return (
     <section id="how" className="border-b border-border bg-background py-20 lg:py-28">
@@ -368,9 +490,11 @@ function HowItWorks() {
             <div key={s.n} className="relative rounded-3xl border border-border bg-card p-7">
               <span
                 className={`font-mono text-7xl font-bold leading-none ${
-                  s.tone === "violet" ? "text-brand-violet" :
-                  s.tone === "mint" ? "text-brand-mint" :
-                  "text-[oklch(0.55_0.15_75)]"
+                  s.tone === "violet"
+                    ? "text-brand-violet"
+                    : s.tone === "mint"
+                      ? "text-brand-mint"
+                      : "text-[oklch(0.55_0.15_75)]"
                 }`}
               >
                 {s.n}
@@ -398,7 +522,8 @@ function Pricing() {
         <SectionEyebrow>/ pricing</SectionEyebrow>
         <div className="mt-4 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <h2 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-            Simple pricing.<br />
+            Simple pricing.
+            <br />
             <span className="text-muted-foreground">Upgrade when you outgrow it.</span>
           </h2>
         </div>
@@ -408,7 +533,12 @@ function Pricing() {
             name="Free"
             price="$0"
             tagline="For getting started"
-            features={["Up to 25 items", "Renewal reminders", "Document attachments (50MB)", "Single user"]}
+            features={[
+              "Up to 25 items",
+              "Renewal reminders",
+              "Document attachments (50MB)",
+              "Single user",
+            ]}
           />
           <PricingCard
             name="Pro"
@@ -435,10 +565,22 @@ function Pricing() {
 // ──────────────────────────────────────────────────────────
 function Faq() {
   const items = [
-    { q: "Is LifeRegistry a password manager?", a: "No. We don't store credentials. Use a password manager for those — LifeRegistry tracks the accounts, subscriptions, warranties, and renewals around them." },
-    { q: "Do you connect to my bank?", a: "Never. You enter what you want to track. We don't sync your transactions or access financial accounts." },
-    { q: "Is my data private?", a: "Yes. Your registry is yours alone. Documents are stored in a private bucket with access scoped strictly to you and anyone you explicitly share with." },
-    { q: "Can I share with my partner?", a: "Yes — household sharing is built in. Invite family members as viewers or co-editors on a Pro plan." },
+    {
+      q: "Is LifeRegistry a password manager?",
+      a: "No. We don't store credentials. Use a password manager for those — LifeRegistry tracks the accounts, subscriptions, warranties, and renewals around them.",
+    },
+    {
+      q: "Do you connect to my bank?",
+      a: "Never. You enter what you want to track. We don't sync your transactions or access financial accounts.",
+    },
+    {
+      q: "Is my data private?",
+      a: "Yes. Your registry is yours alone. Documents are stored in a private bucket with access scoped strictly to you and anyone you explicitly share with.",
+    },
+    {
+      q: "Can I share with my partner?",
+      a: "Yes — household sharing is built in. Invite family members as viewers or co-editors on a Pro plan.",
+    },
   ];
   return (
     <section id="faq" className="border-b border-border bg-background py-20 lg:py-28">
@@ -460,7 +602,9 @@ function Faq() {
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                 <span className="font-display text-base font-semibold tracking-tight">{f.q}</span>
-                <span className="font-mono text-xl text-muted-foreground transition group-open:rotate-45">+</span>
+                <span className="font-mono text-xl text-muted-foreground transition group-open:rotate-45">
+                  +
+                </span>
               </summary>
               <p className="mt-3 text-sm text-muted-foreground">{f.a}</p>
             </details>
@@ -486,22 +630,34 @@ function FinalCta() {
               Start your registry today.
             </h2>
             <p className="mt-4 max-w-lg text-background/70">
-              Five minutes to set up. A lifetime of never asking &ldquo;what am I paying for?&rdquo; again.
+              Five minutes to set up. A lifetime of never asking &ldquo;what am I paying for?&rdquo;
+              again.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button size="lg" className="rounded-full bg-brand-gradient px-6 text-white shadow-lg hover:opacity-95">
+              <Button
+                size="lg"
+                className="rounded-full bg-brand-gradient px-6 text-white shadow-lg hover:opacity-95"
+              >
                 Get started free <ArrowRight className="ml-1.5 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full border-background/30 bg-transparent text-background hover:bg-background/10 hover:text-background">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full border-background/30 bg-transparent text-background hover:bg-background/10 hover:text-background"
+              >
                 Book a 10-min demo
               </Button>
             </div>
             {/* stickers */}
             <div className="pointer-events-none absolute right-2 top-2 hidden sm:block">
-              <Sticker tone="amber" className="tilt-r">free forever tier</Sticker>
+              <Sticker tone="amber" className="tilt-r">
+                free forever tier
+              </Sticker>
             </div>
             <div className="pointer-events-none absolute -bottom-1 right-10 hidden md:block">
-              <Sticker tone="mint" className="tilt-l">no credit card</Sticker>
+              <Sticker tone="mint" className="tilt-l">
+                no credit card
+              </Sticker>
             </div>
           </div>
         </div>
@@ -513,9 +669,17 @@ function FinalCta() {
 // ──────────────────────────────────────────────────────────
 // Bits
 // ──────────────────────────────────────────────────────────
-function SectionEyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function SectionEyebrow({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <p className={`font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground ${className}`}>
+    <p
+      className={`font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground ${className}`}
+    >
       {children}
     </p>
   );
@@ -568,7 +732,9 @@ function KpiTile({
         <Icon className="h-3.5 w-3.5" />
       </div>
       <p className="mt-2.5 font-display text-2xl font-bold tracking-tight">{value}</p>
-      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{label}</p>
+      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+        {label}
+      </p>
     </div>
   );
 }
@@ -599,7 +765,9 @@ function UpcomingRow({
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm font-semibold">{amount}</span>
-        <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${toneClass}`}>{tag}</span>
+        <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${toneClass}`}>
+          {tag}
+        </span>
       </div>
     </li>
   );
@@ -629,7 +797,9 @@ function PricingCard({
     >
       {featured && (
         <div className="absolute -top-3 left-7">
-          <Sticker tone="amber" className="tilt-sm-r">most popular</Sticker>
+          <Sticker tone="amber" className="tilt-sm-r">
+            most popular
+          </Sticker>
         </div>
       )}
       <div className="flex items-center justify-between">

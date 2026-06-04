@@ -41,7 +41,11 @@ export const Route = createFileRoute("/_authenticated/items")({
   head: () => ({
     meta: [
       { title: "Registry — LifeRegistry" },
-      { name: "description", content: "Every subscription, warranty, account, and renewal you track — in one searchable registry." },
+      {
+        name: "description",
+        content:
+          "Every subscription, warranty, account, and renewal you track — in one searchable registry.",
+      },
     ],
   }),
   component: ItemsPage,
@@ -153,11 +157,7 @@ function ItemsPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                onClick={exportCSV}
-                className="rounded-full"
-              >
+              <Button variant="outline" onClick={exportCSV} className="rounded-full">
                 <Download className="h-4 w-4" /> Export CSV
               </Button>
               <Button
@@ -203,7 +203,13 @@ function ItemsPage() {
             {loading ? (
               <CardGridSkeleton count={6} />
             ) : filtered.length === 0 ? (
-              <EmptyState onAdd={() => { setEditing(null); setEditOpen(true); }} hasAny={items.length > 0} />
+              <EmptyState
+                onAdd={() => {
+                  setEditing(null);
+                  setEditOpen(true);
+                }}
+                hasAny={items.length > 0}
+              />
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((i) => (
@@ -212,7 +218,10 @@ function ItemsPage() {
                     item={i}
                     selected={selected.has(i.id)}
                     onToggleSelect={() => toggleSelect(i.id)}
-                    onEdit={() => { setEditing(i); setEditOpen(true); }}
+                    onEdit={() => {
+                      setEditing(i);
+                      setEditOpen(true);
+                    }}
                     onDelete={() => setDeleteId(i.id)}
                   />
                 ))}
@@ -229,7 +238,11 @@ function ItemsPage() {
             <span className="px-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
               {selected.size} selected
             </span>
-            <Select onValueChange={(v) => bulkSetStatus(v as "active" | "paused" | "cancelled" | "expired")}>
+            <Select
+              onValueChange={(v) =>
+                bulkSetStatus(v as "active" | "paused" | "cancelled" | "expired")
+              }
+            >
               <SelectTrigger className="h-8 w-28 rounded-full text-xs">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
@@ -248,7 +261,13 @@ function ItemsPage() {
             >
               <Trash2 className="h-3.5 w-3.5" /> Delete
             </Button>
-            <Button size="icon" variant="ghost" onClick={clearSelection} className="h-8 w-8 rounded-full" aria-label="Clear">
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={clearSelection}
+              className="h-8 w-8 rounded-full"
+              aria-label="Clear"
+            >
               <X className="h-3.5 w-3.5" />
             </Button>
           </div>
@@ -265,7 +284,10 @@ function ItemsPage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -275,12 +297,17 @@ function ItemsPage() {
       <AlertDialog open={bulkDeleteOpen} onOpenChange={setBulkDeleteOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete {selected.size} item{selected.size === 1 ? "" : "s"}?</AlertDialogTitle>
+            <AlertDialogTitle>
+              Delete {selected.size} item{selected.size === 1 ? "" : "s"}?
+            </AlertDialogTitle>
             <AlertDialogDescription>This can't be undone.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={bulkDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+            <AlertDialogAction
+              onClick={bulkDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
               Delete all
             </AlertDialogAction>
           </AlertDialogFooter>
@@ -290,7 +317,13 @@ function ItemsPage() {
   );
 }
 
-function ItemCard({ item, selected, onToggleSelect, onEdit, onDelete }: {
+function ItemCard({
+  item,
+  selected,
+  onToggleSelect,
+  onEdit,
+  onDelete,
+}: {
   item: ItemRow;
   selected: boolean;
   onToggleSelect: () => void;
@@ -300,12 +333,26 @@ function ItemCard({ item, selected, onToggleSelect, onEdit, onDelete }: {
   const meta = TYPE_META[item.type];
   const due = daysUntil(item.renewal_date ?? item.expiry_date);
   const dueLabel =
-    due === null ? null : due < 0 ? `${Math.abs(due)}d overdue` : due === 0 ? "today" : `in ${due}d`;
+    due === null
+      ? null
+      : due < 0
+        ? `${Math.abs(due)}d overdue`
+        : due === 0
+          ? "today"
+          : `in ${due}d`;
   const dueTone =
-    due === null ? "" : due < 0 ? "bg-brand-coral/15 text-brand-coral" : due <= 7 ? "bg-brand-amber/25 text-amber-700 dark:text-brand-amber" : "bg-brand-mint/15 text-brand-mint";
+    due === null
+      ? ""
+      : due < 0
+        ? "bg-brand-coral/15 text-brand-coral"
+        : due <= 7
+          ? "bg-brand-amber/25 text-amber-700 dark:text-brand-amber"
+          : "bg-brand-mint/15 text-brand-mint";
 
   return (
-    <article className={`glass-card group relative rounded-3xl p-5 transition hover:-translate-y-0.5 ${selected ? "ring-2 ring-brand-violet" : ""}`}>
+    <article
+      className={`glass-card group relative rounded-3xl p-5 transition hover:-translate-y-0.5 ${selected ? "ring-2 ring-brand-violet" : ""}`}
+    >
       <div className="absolute left-3 top-3 z-10">
         <Checkbox
           checked={selected}
@@ -316,18 +363,25 @@ function ItemCard({ item, selected, onToggleSelect, onEdit, onDelete }: {
       </div>
       <div className="flex items-start justify-between gap-3 pl-8">
         <div className="flex items-center gap-3">
-          <span className={`grid h-10 w-10 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}>
+          <span
+            className={`grid h-10 w-10 place-items-center rounded-2xl font-display text-lg ${meta.tone}`}
+          >
             {meta.emoji}
           </span>
           <div>
-            <h3 className="font-display text-lg font-bold leading-tight tracking-tight">{item.name}</h3>
+            <h3 className="font-display text-lg font-bold leading-tight tracking-tight">
+              {item.name}
+            </h3>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-              {meta.label}{item.vendor ? ` · ${item.vendor}` : ""}
+              {meta.label}
+              {item.vendor ? ` · ${item.vendor}` : ""}
             </p>
           </div>
         </div>
         {dueLabel && (
-          <span className={`sticker shrink-0 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest ${dueTone}`}>
+          <span
+            className={`sticker shrink-0 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest ${dueTone}`}
+          >
             {dueLabel}
           </span>
         )}
@@ -349,14 +403,25 @@ function ItemCard({ item, selected, onToggleSelect, onEdit, onDelete }: {
         </div>
         <div className="flex gap-1 opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">
           {item.url && (
-            <a href={item.url} target="_blank" rel="noreferrer" className="grid h-8 w-8 place-items-center rounded-full hover:bg-muted">
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+              className="grid h-8 w-8 place-items-center rounded-full hover:bg-muted"
+            >
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
           )}
-          <button onClick={onEdit} className="grid h-8 w-8 place-items-center rounded-full hover:bg-muted">
+          <button
+            onClick={onEdit}
+            className="grid h-8 w-8 place-items-center rounded-full hover:bg-muted"
+          >
             <Pencil className="h-3.5 w-3.5" />
           </button>
-          <button onClick={onDelete} className="grid h-8 w-8 place-items-center rounded-full text-brand-coral hover:bg-muted">
+          <button
+            onClick={onDelete}
+            className="grid h-8 w-8 place-items-center rounded-full text-brand-coral hover:bg-muted"
+          >
             <Trash2 className="h-3.5 w-3.5" />
           </button>
         </div>
@@ -365,7 +430,10 @@ function ItemCard({ item, selected, onToggleSelect, onEdit, onDelete }: {
       {(item.tags ?? []).length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {item.tags!.map((t) => (
-            <span key={t} className="rounded-full bg-muted px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+            <span
+              key={t}
+              className="rounded-full bg-muted px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+            >
               #{t}
             </span>
           ))}
@@ -390,7 +458,10 @@ function EmptyState({ onAdd, hasAny }: { onAdd: () => void; hasAny: boolean }) {
           : "Drop in a subscription, a warranty, a domain — anything you pay for or own."}
       </p>
       {!hasAny && (
-        <Button onClick={onAdd} className="rounded-full bg-foreground font-semibold text-background hover:bg-foreground/90">
+        <Button
+          onClick={onAdd}
+          className="rounded-full bg-foreground font-semibold text-background hover:bg-foreground/90"
+        >
           <Plus className="h-4 w-4" /> Add item
         </Button>
       )}
