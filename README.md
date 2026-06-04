@@ -1,45 +1,44 @@
 # LifeRegistry
 
-> The command center for everything you own and pay for — subscriptions, warranties, domains, memberships, insurance, bills, and devices, all in one place.
+> One simple app to manage everything you own and pay for — subscriptions, warranties, domains, bills, devices, and more. All in one place, all in your browser.
 
-A polished demo MVP built with **TanStack Start**, **React 19**, **Tailwind CSS v4**, and **shadcn/ui**. This build runs entirely in the browser with a mock backend (localStorage), so it's instantly deployable with zero infrastructure.
+A demo app built with **React 19**, **Tailwind CSS v4**, and **shadcn/ui** components. Your data stays on your device (it's all stored in your browser), so there's no backend or login required.
 
 **Developed by [Usama Ali](https://www.linkedin.com/in/usamaalipk/)**
 
 ---
 
-## ✨ Features
+## ✨ What You Can Do
 
-- 🔐 **Mock auth** — sign in with any email or use the one-click demo
-- 📊 **Dashboard** — KPIs for monthly spend, upcoming renewals, and expiries
-- 📚 **Registry** — full CRUD over 9 item types (subscription, warranty, domain, insurance, bill, device, account, membership, other)
-- 🗓 **Calendar view** — see renewals and expiries by month
-- 📈 **Analytics** — spend breakdown by type, vendor, and billing cycle
-- ⌘ **Command palette** (⌘K / Ctrl+K) — global search and quick actions
-- ✅ **Bulk actions** — multi-select, change status, delete
-- 📥 **CSV export** — download your registry
-- 🌗 **Polished UI** — semantic design tokens, dark-mode ready, responsive
-- 💾 **Persists in `localStorage`** — your data stays on this browser
-- 🧹 **Reset mock data** — restore the seed registry from Settings
+- 📊 **Dashboard** — See how much you're spending and when things renew
+- 📚 **Track items** — Add subscriptions, warranties, domains, insurance, bills, devices, and more
+- 🗓 **Calendar view** — Visualize all your renewals and expiries by month
+- 📈 **Analytics** — Understand your spending by category and billing cycle
+- ⌘ **Search anything** — Use the command palette (⌘K or Ctrl+K) to find items instantly
+- ✅ **Bulk actions** — Select multiple items and update or delete them at once
+- 📥 **Export your data** — Download everything as a CSV file
+- 🌗 **Dark mode** — Easy on the eyes, day or night
 
 ---
 
-## 🚀 Quick start (local)
+## 🚀 Get Started
 
-Requires [Bun](https://bun.sh) (or Node 20+ with npm/pnpm).
+### Local setup
+
+You need [Bun](https://bun.sh) installed (or Node 20+ with npm/pnpm).
 
 ```bash
 bun install
 bun run dev
 ```
 
-Open <http://localhost:5173>.
+Open <http://localhost:5173> in your browser.
 
-To sign in, click **Try the demo** on the auth screen — or enter any email/password.
+**To try it out:** Click **Try the demo** on the login screen — or sign in with any email and password.
 
 ---
 
-## 📦 Build
+## 📦 Build for production
 
 ```bash
 bun run build
@@ -48,75 +47,94 @@ bun run preview
 
 ---
 
-## ☁️ Deploy
+## ☁️ Deploy to Vercel
 
-### 1. Push to GitHub
+### Step 1: Push to GitHub
 
 ```bash
 git init
 git add .
-git commit -m "feat: initial LifeRegistry MVP"
+git commit -m "feat: initial LifeRegistry"
 git branch -M main
 git remote add origin https://github.com/<your-username>/liferegistry.git
 git push -u origin main
 ```
 
-### 2. Deploy on Vercel
+### Step 2: Deploy
 
-1. Go to <https://vercel.com/new> and **Import** your GitHub repo.
-2. Vercel auto-detects the project. Leave the defaults — `vercel.json` already sets `NITRO_PRESET=vercel` so the TanStack Start SSR build outputs a Vercel-native bundle.
-3. Click **Deploy**.
+1. Go to <https://vercel.com/new>
+2. Import your GitHub repository
+3. Click **Deploy** — that's it! Vercel will handle the rest automatically.
 
-No environment variables are required — this is a fully client-side mock.
-
-> Optional: if you ever wire a real backend (e.g. Supabase, Postgres), add the relevant `VITE_*` env vars in **Vercel → Project → Settings → Environment Variables**.
+No environment setup needed. Your app runs fully in the browser.
 
 ---
 
-## 🧱 Tech stack
+## 🎯 Features at a glance
 
-| Layer        | Tool                                      |
-| ------------ | ----------------------------------------- |
-| Framework    | TanStack Start v1 (React 19 + Vite 7)     |
-| Styling      | Tailwind CSS v4 + shadcn/ui + Radix       |
-| Routing      | TanStack Router (file-based)              |
-| State / data | TanStack Query + localStorage mock        |
-| Charts       | Recharts                                  |
-| Icons        | lucide-react                              |
-| Forms        | react-hook-form + zod                     |
-| Command bar  | cmdk                                      |
-| CSV          | papaparse                                 |
+| Feature | What it does |
+| --- | --- |
+| 🔐 **Mock login** | Sign in without creating an account |
+| 💾 **Stores locally** | Your data lives in your browser — totally private |
+| 📊 **Dashboard KPIs** | Monthly spend, upcoming renewals, expiries |
+| 🛠 **Full CRUD** | Create, read, update, or delete any item |
+| 9 Item types | Subscription, warranty, domain, insurance, bill, device, account, membership, and others |
+| 📈 **Smart analytics** | See breakdowns by type, vendor, and billing cycle |
+| ✅ **Bulk operations** | Select multiple items and act on them together |
+| 📥 **CSV export** | Download your registry anytime |
+| 🌗 **Dark mode** | Choose your theme |
+| 🔄 **Reset data** | Restore the demo data from Settings anytime |
 
 ---
 
-## 📁 Project structure
+## 📝 How it works
+
+- **All in your browser** — No server, no database, no backend
+- **localStorage** — Data is saved in your browser's local storage
+- **Private** — Only you can see your data
+- **No sign-up** — Use any email/password to get started
+- **Portable** — Export as CSV and import elsewhere if needed
+
+To clear all data, go to **Settings → Reset mock data** or clear your browser's local storage.
+
+---
+
+## 🛠 Tech stack (for developers)
+
+| Layer | Tool |
+| --- | --- |
+| Framework | TanStack Start + React 19 |
+| Styling | Tailwind CSS v4 + shadcn/ui |
+| Routing | TanStack Router |
+| State & data | TanStack Query + localStorage |
+| Charts | Recharts |
+| Icons | lucide-react |
+| Forms | react-hook-form + zod |
+| Search | cmdk |
+| Data export | papaparse |
+
+---
+
+## 📁 Project structure (for developers)
 
 ```
 src/
-├─ routes/                  TanStack file-based routes
-│  ├─ __root.tsx            app shell
-│  ├─ index.tsx             landing page
-│  ├─ auth.tsx              sign in / sign up
-│  └─ _authenticated/       protected app (dashboard, items, calendar, analytics, settings)
-├─ components/
-│  ├─ app/                  AppShell, CommandPalette, ItemFormDialog…
-│  ├─ landing/              SiteHeader, SiteFooter
-│  ├─ brand/                Logo
-│  └─ ui/                   shadcn primitives
+├─ routes/              App pages (landing, auth, dashboard, etc.)
+├─ components/          Reusable UI components
 ├─ lib/
-│  ├─ mock.ts               localStorage-backed mock backend + seed data
-│  ├─ items.ts              item type metadata + helpers
-│  └─ csv.ts                CSV import/export
-└─ styles.css               design tokens (oklch) + Tailwind theme
+│  ├─ mock.ts          localStorage mock backend
+│  ├─ items.ts         Item type helpers
+│  └─ csv.ts           CSV import/export
+└─ styles.css          Design tokens and theme
 ```
 
 ---
 
-## 📝 Notes
+## 💡 Tips
 
-- This is a **demo / portfolio build**. All data lives in your browser's `localStorage` under `lr.mock.*` keys.
-- To reset to the seed registry, go to **Settings → Reset mock data**.
-- To wipe everything, clear the site's storage in DevTools → Application → Local Storage.
+- The demo data resets when you clear your browser's cookies/cache
+- To restore demo data anytime, go to **Settings → Reset mock data**
+- All your data is **never** sent to any server — it's just on your device
 
 ---
 
@@ -124,10 +142,10 @@ src/
 
 Designed & developed by **[Usama Ali](https://www.linkedin.com/in/usamaalipk/)**.
 
-If you found this useful, a ⭐ on GitHub or a LinkedIn connection is appreciated!
+If this was helpful, a ⭐ on GitHub or a [LinkedIn](https://www.linkedin.com/in/usamaalipk/) connection would mean a lot!
 
 ---
 
 ## 📄 License
 
-MIT — do whatever, just keep the credit.
+MIT — Do whatever you want, just keep the credit.
